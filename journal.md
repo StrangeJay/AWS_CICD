@@ -1,4 +1,4 @@
-# Setting Up a CI/CD Pipeline with AWS CodeBuild, CodeCommit, and CodeDeploy
+# Build a CI/CD Pipeline with AWS CodeBuild, CodeCommit, and CodeDeploy
 
 ## Introduction
 
@@ -58,25 +58,25 @@ By the end of this guide, you will have a fully functional CI/CD pipeline that a
 - [x] Task 6: Initialise Database
 - [x] Task 7: Set up the Code base
 - [x] Task 8: Set up s3 bucket for artifact storage
-- [] Task 9: Set up Code Build
-- [] Task 10: Set up code pipeline
-- [] Task 11: Test your pipeline
+- [x] Task 9: Set up Code Build
+- [x] Task 10: Set up code pipeline
+- [x] Task 11: Test your pipeline
 
-Project repo: [jprofile](https://github.com/StrangeJay/jprofile-project/tree/aws-ci)
+**Project repo:** [**jprofile**](https://github.com/StrangeJay/jprofile-project/tree/aws-ci)
 
 ## Documentation
 
 ### Create a Key Pair
 
-- Search for key pair in the search field and click on **Key pairs**.
+- Enter 'key pairs' in the search field and select **Key pairs** from the displayed options.
 
 ![](img)
 
-- Click on the **Create key pair** button.
+- Click the **Create key pair** button to proceed.
 
 ![](img)
 
-- Set a **Name** for your key pair and click on **Create key pair**.
+- Provide a **Name** for the key pair and click **Create key pair**.
 
 ![](img)
 
@@ -84,44 +84,44 @@ Project repo: [jprofile](https://github.com/StrangeJay/jprofile-project/tree/aws
 
 ### Create an EC2 Instance Profile
 
-- **Search for iam** and select **IAM** from the list of services that drop down.
+- Enter **IAM** in the search bar and choose **IAM** from the displayed services.
 
 ![](img)
 
-- Click on **Roles**.
+- Navigate to **Roles** by clicking on it.
 
 ![](img)
 
-- Click on **Create role**.
+- Click the **Create role** button.
 
 ![](img)
 
-- Click on the **chevron icon** and select **EC2** from the dropdown menu.
+- Click the **chevron icon**, then select **EC2** from the dropdown menu.
 
 ![](img)
 
-- Click on **Next**.
+- Click on **Next** to proceed.
 
 ![](img)
 
-- **Search for bean**, and select the 4 policies in the image:
+- In the search field, search for **bean**, and select the four policies shown in the image:
 
-**AdministratorAccess-AWSElasticBeanstalk**: 
-**AWSElasticBeanstalkCustomPlatformEC2Role**: 
-**AWSElasticBeanstalkRoleSNS**: 
-**AWSElasticBeanstalkWebTier**:
-
-![](img)
-
-- Click on **Next**.
+    - **AdministratorAccess-AWSElasticBeanstalk**: This policy grants full administrative access to AWS Elastic Beanstalk and its associated resources. It allows a user or role to create, update, and delete Elastic Beanstalk applications, environments, and configurations. It also provides permissions to manage EC2 instances, load balancers, auto-scaling groups, and other resources Elastic Beanstalk provisions.
+    - **AWSElasticBeanstalkCustomPlatformEC2Role**: This policy is designed for EC2 instances that run custom Elastic Beanstalk platforms. It provides the necessary permissions for instances to download platform components, manage logs, and interact with other AWS services needed to run a custom platform.
+    - **AWSElasticBeanstalkRoleSNS**: This policy allows Elastic Beanstalk to send notifications via Amazon Simple Notification Service (SNS). It enables Elastic Beanstalk to publish messages related to application and environment events, such as deployment statuses or failures, which can then trigger alerts or automated actions.
+    - **AWSElasticBeanstalkWebTier**: This policy is intended for instances in the web tier of an Elastic Beanstalk environment. It grants permissions for web servers to interact with Elastic Beanstalk, manage logs, and perform basic operations required for hosting web applications. It ensures that web-tier instances can function properly within the Elastic Beanstalk-managed infrastructure.
 
 ![](img)
 
-- Give a **Role name** and **Description**.
+- Click **Next** to proceed.
 
 ![](img)
 
-- Click on **Create role**.
+- Provide a **Role name** and **Description**.
+
+![](img)
+
+- Click **Create role** to finalize the process.
 
 ![](img)
 
@@ -131,60 +131,60 @@ Project repo: [jprofile](https://github.com/StrangeJay/jprofile-project/tree/aws
 
 #### Configure environment
 
-- Search for beanstalk in the search field and select **Elastic Beanstalk** from the results.
+- Enter 'beanstalk' in the search field, then select **Elastic Beanstalk** from the search results.
 
 ![](img)
 
-- Click on **Create application**.
+- Click **Create application** to begin the process.
 
 ![](img)
 
-- Set your *Application name**, in Environment information set your **Environment name**, **Domain** and **check availability**
+- Enter your **Application name**, and in the Environment information section, provide your **Environment name** and **Domain**, then **check availability**.
 
 ![](img)
 
 > [!NOTE]
-Make sure the domain name is unique because that'll form the URL.
+It is essential that the domain name is unique, since it will be used to construct the URL.
 
-- Our app runs on Tomcat so click on the **chevron icon** and  choose **Tomcat** as the platform.
+- Since our app runs on Tomcat, click the **chevron icon** and select **Tomcat** as the platform.
 
 ![](img)
 
-- In the Presets section, select **custom configuration** and click on **Next**.
+- Choose **custom configuration** in the Presets section, then click **Next**.
 
 ![](img)
 
 #### Configure service access
 
-- For service roles select **Create and use new service role**, click on the **chevron down** icon and select your created key pair.
+- For service roles, select **Create and use new service role**, then click the **chevron down icon** and choose your created key pair.
 
 ![](img)
 
-- Click on the empty field, select your created **EC2 instance profile** and click **Next**.
+- Click within the empty field to select your created **EC2 instance profile**, and proceed by clicking **Next**.
 
 ![](img)
 
 #### Set up networking, database, and tags
 
-- Click on the **chevron icon** and select the **default vpc**.
+- Click the **chevron icon** to open the dropdown menu, then select the **default vpc**.
 
 ![](img)
 
-- Ensure public IP address is **Activated** and select all **Availability Zone**.
+- Ensure public IP address is **Activated** and select all **Availability Zones**.
 
 ![](img)
 
-- Click on **Add new tag**.
+- Click the **Add new tag** button.
 
 ![](img)
 
-- Give a **Key** and **Value** pair, and then click on **Next**.
+- Specify a **Key** and **Value** pair, and proceed by clicking **Next**.
 
 ![](img)
 
 #### Configure instance traffic and scaling
 
-- Click on the Root volume type field and select **General Purpose 3(SSD)**
+- Click on the Root volume type field, then choose **General Purpose 3(SSD)** from the options.
 
 ![](img)
 
