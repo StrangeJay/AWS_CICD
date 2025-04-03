@@ -609,18 +609,168 @@ These `sed` commands modify the **`application.properties`** file in **`src/main
 
 ![](img)
 
-- Click on the Bucket name filed and select your created **bucket**.
+- Click on the Bucket name field and select your created **bucket**.
 
 ![](img)
 
-- 
+- Set a **Group name** and **Stream name prefix** for cloudwatch logs and click on **Create build project**. 
 
+![](img)
 
+- Now your project has been created, click on **Start build**.
 
+![](img)
 
+- Confirm the success of the build success.
 
+![](img)
 
+---
 
+### Set Up Code Pipeline
+
+- Search for code pipeline and select **CodePipeline** from the list of Services.
+
+![](img)
+
+- Click on **Create pipeline**.
+
+![](img)
+
+- Choose **Build custom pipeline** and click on **Next**. 
+
+![](img)
+
+- Enter a **Pipeline name** and click on **Next**.
+
+![](img)
+
+- Click on the Source provider field and select **Bitbucket**.
+
+![](img)
+
+- Click on the **Connect to Bitbucket** button.
+
+![](img)
+
+- Give the **Connection name** and click on **Connect to Bitbucket**.
+
+![](img)
+
+- Click on **Install a new app**.
+
+![](img)
+
+- Click on the **Grant access** button.
+
+![](img)
+
+- Click on **Connect** to complete the connection.
+
+![](img)
+
+- Click on the repository field and select your **Bitbucket repo**.
+
+![](img)
+
+- Click on the Default branch field and select **aws-ci**.
+
+![](img)
+
+- Click **Next**.
+
+![](img)
+
+- Select **Other build providers**, click on the field below and select **AWS codebuild** from the options.
+
+![](img)
+
+- Click on the Project name field and select your **created build project**.
+
+![](img)
+
+- Click on **Next**.
+
+![](img)
+
+- For Test provider, select **AWS CodeBuild**.
+
+![](img)
 
 > [!NOTE]
+You can skip this step, it's optional.
 
+- Click on the Project name field and select your **build project**.
+
+![](img)
+
+- Click on **Next**.
+
+![](img)
+
+> [!NOTE]
+There are some inconsistencies between the already built artifact and the Source artifact, so change your input artifact to Source artifact.
+
+![](img)
+
+![](img)
+
+- In the deployment stage, select **AWS Elastic Beanstalk** as the Deploy provider.
+
+![](img)
+
+- Select your **Application name**.
+
+![](img)
+
+- Select your **Environment name**.
+
+![](img)
+
+- Click **Next**.
+
+![](img)
+
+- Review everything and click on **Create pipeline**.
+
+![](img)
+
+- Confirm the successful creation of your pipeline and wait for the process to complete.
+
+![](img)
+
+- If everything was done correctly every stage of the pipeline should succeed. 
+
+![](img)
+
+---
+
+### Test Entire Set Up
+
+- Navigate to your Elastic Beanstalk page and click on the **Domain name** to visit the site.
+
+![](img)
+
+- If your set up was done right, you should see a page like this. Login with **Admin_vp** as Username and Password.
+
+![](img)
+
+- Your App has been successfully deployed.
+
+![](img)
+
+- To test if the pipeline gets triggered as it should, connect to the code repo on your terminal.
+
+![](img)
+
+- Make a minor change and push the change.
+
+![](img)
+
+- Notice the project start building all over again. 
+
+![](img)
+
+---
+
+And that's the end of the project, you have successfully created an AWS pipeline.
