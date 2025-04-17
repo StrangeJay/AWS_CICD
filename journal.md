@@ -504,7 +504,7 @@ Host bitbucket.org
 
 ### Create an S3 Bucket
 
-- Go to your AWS console and search for s3 and select **S3** from the list of services.
+- Go to your AWS console, search for 'S3' in the search bar, and select **S3** from the list of services.
 
 ![](img/s3-1.png)
 
@@ -527,7 +527,7 @@ Just give your bucket a name and create it, leave every other setting on default
 
 ### Set Up Code Build
 
-- Search for cold build and select **CodeBuild** from the list of services.
+- In your AWS console, use the search bar to find 'CodeBuild', and then choose **CodeBuild** from the displayed services.
 
 ![](img/cb1.png)
 
@@ -535,59 +535,59 @@ Just give your bucket a name and create it, leave every other setting on default
 
 ![](img/cb2.png)
 
-- Enter a **Project name**.
+- Enter a **Project name** in the designated field.
 
 ![](img/cb3.png)
 
-- Click on the **chevron icon** in the source provider section and select **Bitbucket** from the dropdown.
+- In the Source provider section, click the **chevron icon** and select **Bitbucket** from the dropdown menu that appears.
 
 ![](img/cb4.png)
 
-- To connect to your Bitbucket account click on **Manage account credentials**.
+- Click on **Manage account credentials** to connect your AWS CodeBuild project to your Bitbucket account.
 
 ![](img/cb5.png)
 
-- Click on the **chevron icon** and select **OAuth app** as the Credential type.
+- Click the **chevron icon** and then select **OAuth app** as the Credential type from the dropdown menu.
 
 ![](img/cb6.png)
 
 > [!NOTE]
-Bitbucket access token is the best option but a paid feature, so use OAuth as long as you're logged into Bitbucket on the same browser.
+While using a Bitbucket access token is the recommended and most secure method, it's a paid feature. Therefore, as long as you are logged into Bitbucket in the same web browser, using OAuth app is a viable alternative.
 
-- Select **CodeBuild** as the service and then click on **Connect to Bitbucket**.
+- Choose **CodeBuild** and then click the **Connect to Bitbucket** button.
 
 ![](img/cb7.png)
 
-- Click on **Confirm** to confirm the connection.
+- Click the **Confirm** button to finalize the connection.
 
 ![](img/cb8.png)
 
-- You should see a message saying your account is successfully connected.
+- You should see a confirmation message indicating that your Bitbucket account has been successfully connected.
 
 ![](img/cb9.png)
 
-- Click on the empty field below Repository and select your **Bitbucket repository** from the dropdown.
+- Click in the empty field below 'Repository'. A dropdown menu will appear; select your **Bitbucket repository** from the list.
 
 ![](img/cb10.png)
 
-- Type the name of the branch we're using **`aws-ci`** into the Source version field.
+- In the 'Source version' field, type the branch name **`aws-ci`**.
 
 ![](img/cb11.png)
 
-- Select **Ubuntu** as your operating system.
+- Choose **Ubuntu** as the operating system for your build environment.
 
 ![](img/cb12.png)
 
-- Scroll down to Build spec and click on **Switch to editor**.
+- Scroll down the page until you find the 'Buildspec' section, and then click the **Switch to editor** button.
 
 ![](img/cb13.png)
 
-- Download or open up and copy the content of the **buildspec.yml file**, paste it in a text editor and replace the necessary fields.
+- Either download the [**buildspec.yml**](https://github.com/StrangeJay/AWS_CICD/blob/master/buildspec.yml) file to your computer or open it directly in your browser. Once you have access to its contents, copy everything and paste it into the text editor on the AWS CodeBuild page. Next, find and replace the placeholders or fields that need your specific configuration.
 
 ![](img/cb14.png)
 
 > [!NOTE]
-This command consists of three sed (stream editor) operations that modify the application.properties file located at src/main/resources/application.properties. Each command uses the sed -i option to perform an in-place substitution, meaning the file is modified directly without creating a new one.
+This command consists of three sed (stream editor) operations that modify the application.properties file located at `src/main/resources/application.properties`. Each command uses the `sed -i` option to perform an in-place substitution, meaning the file is modified directly without creating a new one.
 
 ```
 - sed -i 's/jdbc.password=admin123/jdbc.password=nr1mTWY6OvlLBovvmZpD/' src/main/resources/application.properties
@@ -599,27 +599,27 @@ These `sed` commands modify the **`application.properties`** file in **`src/main
 
 ![](img/cb15.png)
 
-- Copy the entire buildspec.yml content and return to your AWS console and then paste it into the Build commands field.
+- Copy the complete content of the buildspec.yml file. Then, go back to your AWS console and paste this entire content into the 'Build commands' field.
 
 ![](img/cb16.png)
 
-- In the Artifact section, select **Amazon S3**.
+- Scroll down to the 'Artifacts' section. Under 'Type', select **Amazon S3** from the available options.
 
 ![](img/cb17.png)
 
-- Click on the Bucket name field and select your created **bucket**.
+- Click in the 'Bucket name' field. A dropdown menu will appear; select the **bucket** you created earlier from that list.
 
 ![](img/cb18.png)
 
-- Set a **Group name** and **Stream name prefix** for cloudwatch logs and click on **Create build project**. 
+- "Enter a **Group name** and a **Stream name prefix** for your CloudWatch logs. Once you've done this, click the **Create build project** button.
 
 ![](img/cb19.png)
 
-- Now your project has been created, click on **Start build**.
+- Now that your project is created, click the **Start build** button to begin the build process.
 
 ![](img/cb20.png)
 
-- Confirm the success of the build success.
+- Check the build status to confirm that it shows 'Succeeded'.
 
 ![](img/cb21.png)
 
