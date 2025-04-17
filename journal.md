@@ -627,31 +627,31 @@ These `sed` commands modify the **`application.properties`** file in **`src/main
 
 ### Set Up Code Pipeline
 
-- Search for code pipeline and select **CodePipeline** from the list of Services.
+- In your AWS console, use the search bar to find 'CodePipeline', and then choose **CodePipeline** from the displayed services.
 
 ![](img/cp1.png)
 
-- Click on **Create pipeline**.
+- Click the **Create pipeline** button.
 
 ![](img/cp2.png)
 
-- Choose **Build custom pipeline** and click on **Next**. 
+- Select the **Build custom pipeline** option and then click the **Next** button.
 
 ![](img/cp3.png)
 
-- Enter a **Pipeline name** and click on **Next**.
+- Enter a **Pipeline name** and then click the **Next** button.
 
 ![](img/cp4.png)
 
-- Click on the Source provider field and select **Bitbucket**.
+- Click on the 'Source provider' field. A dropdown menu will appear; select **Bitbucket** from that list.
 
 ![](img/cp5.png)
 
-- Click on the **Connect to Bitbucket** button.
+- Click the **Connect to Bitbucket** button to link your Bitbucket account to CodePipeline.
 
 ![](img/cp6.png)
 
-- Give the **Connection name** and click on **Connect to Bitbucket**.
+- Enter a **Connection name** in the provided field and then click the **Connect to Bitbucket** button.
 
 ![](img/cp7.png)
 
@@ -659,7 +659,7 @@ These `sed` commands modify the **`application.properties`** file in **`src/main
 
 ![](img/cp8.png)
 
-- Click on the **Grant access** button.
+- Click the **Grant access** button.
 
 ![](img/cp9.png)
 
@@ -667,11 +667,11 @@ These `sed` commands modify the **`application.properties`** file in **`src/main
 
 ![](img/cp10.png)
 
-- Click on the repository field and select your **Bitbucket repo**.
+- Click in the 'Repository' field. A dropdown menu will appear; select your **Bitbucket repo** from that list.
 
 ![](img/cp11.png)
 
-- Click on the Default branch field and select **aws-ci**.
+- Click on the Default branch field and select **aws-ci** from the dropdown menu.
 
 ![](img/cp12.png)
 
@@ -679,45 +679,45 @@ These `sed` commands modify the **`application.properties`** file in **`src/main
 
 ![](img/cp13.png)
 
-- Select **Other build providers**, click on the field below and select **AWS codebuild** from the options.
+- Choose **Other build providers**. Next, locate the empty field underneath. Click on it to open a dropdown list, and then select **AWS CodeBuild** from the options.
 
 ![](img/cp14.png)
 
-- Click on the Project name field and select your **created build project**.
+- Click in the Project name field and select your **created build project**.
 
 ![](img/cp15.png)
 
-- Click on **Next**.
+- Click the **Next** button to proceed to the next step.
 
 ![](img/cp16.png)
 
-- For Test provider, select **AWS CodeBuild**.
+- Choose **AWS CodeBuild** as the test provider for your pipeline.
 
 ![](img/cp17.png)
 
 > [!NOTE]
-You can skip this step, it's optional.
+This step is optional and can be skipped if you prefer.
 
-- Click on the Project name field and select your **build project**.
+- Click in the Project name field and select your **build project**.
 
 ![](img/cp18.png)
 
-- Click on **Next**.
+- Click the **Next** button.
 
 ![](img/cp19.png)
 
 > [!NOTE]
-There are some inconsistencies between the already built artifact and the Source artifact, so change your input artifact to Source artifact.
+To avoid issues arising from differences between the previously built artifact and the Source artifact, ensure that you select 'Source artifact' as your input artifact.
 
 ![](img/cp19-2.png)
 
 ![](img/cp19-3.png)
 
-- In the deployment stage, select **AWS Elastic Beanstalk** as the Deploy provider.
+- In the deployment stage, choose **AWS Elastic Beanstalk** as the Deploy provider from the available options.
 
 ![](img/cp20.png)
 
-- Select your **Application name**.
+- Click on the 'Application name' field and select your desired **Application name** from the options provided.
 
 ![](img/cp21.png)
 
@@ -729,15 +729,15 @@ There are some inconsistencies between the already built artifact and the Source
 
 ![](img/cp23.png)
 
-- Review everything and click on **Create pipeline**.
+- Take a moment to review all the pipeline configurations you've set up. Once you're satisfied, click the **Create pipeline** button.
 
 ![](img/cp24.png)
 
-- Confirm the successful creation of your pipeline and wait for the process to complete.
+- Verify that your pipeline has been successfully created. Once confirmed, wait for the pipeline execution to finish.
 
 ![](img/cp25.png)
 
-- If everything was done correctly every stage of the pipeline should succeed. 
+- If the setup was performed correctly, all stages of your pipeline should show a successful result, indicated by green tick icons.
 
 ![](img/cp26.png)
 
@@ -745,30 +745,30 @@ There are some inconsistencies between the already built artifact and the Source
 
 ### Test Entire Set Up
 
-- Navigate to your Elastic Beanstalk page and click on the **Domain name** to visit the site.
+- Go to your Elastic Beanstalk environment page. There, click on the **Domain name** link to open your deployed website.
 
 ![](img/test1.png)
 
-- If your set up was done right, you should see a page like this. Login with **Admin_vp** as Username and Password.
+- If your set up was done right,  a webpage should have loaded. On this page, please enter **`Admin_vp`** as the Username and also **`Admin_vp`** as the Password to log in.
 
 ![](img/test2.png)
 
-- Your App has been successfully deployed.
+- Congratulations! Your application has been successfully deployed.
 
 ![](img/test3.png)
 
-- To test if the pipeline gets triggered as it should, connect to the code repo on your terminal.
+- To verify if the pipeline triggers automatically as expected, open your terminal and connect to the repository where your code is stored.
 
 ![](img/test4.png)
 
-- Make a minor change and push the change.
+- Make a small modification to one of your code files and then push this change.
 
 ![](img/test5.png)
 
-- Notice the project start building all over again. 
+- You should now observe that your project has automatically started building again in response to your code push.
 
 ![](img/test6.png)
 
 ---
 
-And that's the end of the project, you have successfully created an AWS pipeline.
+And with that, the project is complete. You have successfully created an AWS pipeline.
