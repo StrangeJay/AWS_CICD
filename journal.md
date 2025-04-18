@@ -107,7 +107,7 @@ By the end of this guide, you will have a fully functional CI/CD pipeline that a
 - In the search field, search for **bean**⑧, and select the four policies shown in the image:
 
     - **AdministratorAccess-AWSElasticBeanstalk**: This policy grants full administrative access to AWS Elastic Beanstalk and its associated resources. It allows a user or role to create, update, and delete Elastic Beanstalk applications, environments, and configurations. It also provides permissions to manage EC2 instances, load balancers, auto-scaling groups, and other resources Elastic Beanstalk provisions.
-    - **AWSElasticBeanstalkCustomPlatformEC2Role**: This policy is designed for EC2 instances that run custom Elastic Beanstalk platforms. It provides the necessary permissions for instances to download platform components, manage logs, and interact with other AWS services needed to run a custom platform.
+    - **AWSElasticBeanstalkCustomPlatformforEC2Role**: This policy is designed for EC2 instances that run custom Elastic Beanstalk platforms. It provides the necessary permissions for instances to download platform components, manage logs, and interact with other AWS services needed to run a custom platform.
     - **AWSElasticBeanstalkRoleSNS**: This policy allows Elastic Beanstalk to send notifications via Amazon Simple Notification Service (SNS). It enables Elastic Beanstalk to publish messages related to application and environment events, such as deployment statuses or failures, which can then trigger alerts or automated actions.
     - **AWSElasticBeanstalkWebTier**: This policy is intended for instances in the web tier of an Elastic Beanstalk environment. It grants permissions for web servers to interact with Elastic Beanstalk, manage logs, and perform basic operations required for hosting web applications. It ensures that web-tier instances can function properly within the Elastic Beanstalk-managed infrastructure.
 
@@ -184,7 +184,7 @@ It is essential that the domain name is unique, since it will be used to constru
 
 #### Configure instance traffic and scaling
 
-- Click on the Root volume type field, then choose **General Purpose 3(SSD)**① from the options.
+- Click on the Root volume type field, then choose **General Purpose 3(SSD)①** from the options.
 
 ![](img/ebean12.png)
 
@@ -336,7 +336,7 @@ It's important for this exercise that you name your initial database 'accounts' 
 
 ![](img/ec2-9.png)
 
-- Paste in the **security group ID**⑪ of the instances you copied earlier, and click **Save rule**⑫.
+- Paste in the **security group ID**⑪ of the instances you copied earlier, and click **Save rules**⑫.
 
 ![](img/ec2-10.png)
 
@@ -667,7 +667,7 @@ These `sed` commands modify the **`application.properties`** file in **`src/main
 
 ![](img/cp10.png)
 
-- Click in the 'Repository' field. A dropdown menu will appear; select your **Bitbucket repo**⑭ from that list.
+- Click in the 'Repository name' field. A dropdown menu will appear; select your **Bitbucket repo**⑭ from that list.
 
 ![](img/cp11.png)
 
