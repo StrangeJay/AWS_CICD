@@ -68,15 +68,15 @@ By the end of this guide, you will have a fully functional CI/CD pipeline that a
 
 ### Create a Key Pair
 
-- Enter 'key pairs' in the search field and select **Key pairs** from the displayed options.
+- Enter 'key pairs' in the search field and select **Key pairs**① from the displayed options.
 
 ![](img/keypair1.png)
 
-- Click the **Create key pair** button to proceed.
+- Click the **Create key pair**② button to proceed.
 
 ![](img/keypair2.png)
 
-- Provide a **Name** for the key pair and click **Create key pair**.
+- Provide a **Name**③ for the key pair and click **Create key pair**④.
 
 ![](img/keypair4.png)
 
@@ -84,27 +84,27 @@ By the end of this guide, you will have a fully functional CI/CD pipeline that a
 
 ### Create an EC2 Instance Profile
 
-- Enter **IAM** in the search bar and choose **IAM** from the displayed services.
+- Enter **IAM**① in the search bar and choose **IAM**② from the displayed services.
 
 ![](img/iam1.png)
 
-- Navigate to **Roles** by clicking on it.
+- Navigate to **Roles**③ by clicking on it.
 
 ![](img/iam2.png)
 
-- Click the **Create role** button.
+- Click the **Create role**④ button.
 
 ![](img/iam3.png)
 
-- Click the **chevron icon**, then select **EC2** from the dropdown menu.
+- Click the **chevron icon**⑤, then select **EC2**⑥ from the dropdown menu.
 
 ![](img/iam4.png)
 
-- Click on **Next** to proceed.
+- Click on **Next**⑦ to proceed.
 
 ![](img/iam5.png)
 
-- In the search field, search for **bean**, and select the four policies shown in the image:
+- In the search field, search for **bean**⑧, and select the four policies shown in the image:
 
     - **AdministratorAccess-AWSElasticBeanstalk**: This policy grants full administrative access to AWS Elastic Beanstalk and its associated resources. It allows a user or role to create, update, and delete Elastic Beanstalk applications, environments, and configurations. It also provides permissions to manage EC2 instances, load balancers, auto-scaling groups, and other resources Elastic Beanstalk provisions.
     - **AWSElasticBeanstalkCustomPlatformEC2Role**: This policy is designed for EC2 instances that run custom Elastic Beanstalk platforms. It provides the necessary permissions for instances to download platform components, manage logs, and interact with other AWS services needed to run a custom platform.
@@ -113,15 +113,15 @@ By the end of this guide, you will have a fully functional CI/CD pipeline that a
 
 ![](img/iam6.png)
 
-- Click **Next** to proceed.
+- Click **Next**⑨ to proceed.
 
 ![](img/iam7.png)
 
-- Provide a **Role name** and **Description**.
+- Provide a **Role name**⑩ and **Description**⑪.
 
 ![](img/iam8.png)
 
-- Click **Create role** to finalize the process.
+- Click **Create role**⑫ to finalize the process.
 
 ![](img/iam9.png)
 
@@ -131,109 +131,109 @@ By the end of this guide, you will have a fully functional CI/CD pipeline that a
 
 #### Configure environment
 
-- Enter 'beanstalk' in the search field, then select **Elastic Beanstalk** from the search results.
+- Enter 'beanstalk' in the search field, then select **Elastic Beanstalk**① from the search results.
 
 ![](img/ebean1.png)
 
-- Click **Create application** to begin the process.
+- Click **Create application**② to begin the process.
 
 ![](img/ebean2.png)
 
-- Enter your **Application name**, and in the Environment information section, provide your **Environment name** and **Domain**, then **check availability**.
+- Enter your **Application name**③, and in the Environment information section, provide your **Environment name**④ and **Domain**⑤, then **check availability**⑥.
 
 ![](img/ebean3.png)
 
 > [!NOTE]
 It is essential that the domain name is unique, since it will be used to construct the URL.
 
-- Since our app runs on Tomcat, click the **chevron icon** and select **Tomcat** as the platform.
+- Since our app runs on Tomcat, click the **chevron icon**⑦ and select **Tomcat**⑧ as the platform.
 
 ![](img/ebean4.png)
 
-- Choose **custom configuration** in the Presets section, then click **Next**.
+- Choose **custom configuration**⑨ in the Presets section, then click **Next**⑩.
 
 ![](img/ebean5.png)
 
 #### Configure service access
 
-- For service roles, select **Create and use new service role**, then click the **chevron down icon** and choose your created key pair.
+- For service roles, select **Create and use new service role**①, then click the **chevron down icon**② and choose your created key pair.
 
 ![](img/ebean6.png)
 
-- Click within the empty field to select your created **EC2 instance profile**, and proceed by clicking **Next**.
+- Click within the empty field to select your created **EC2 instance profile**③, and proceed by clicking **Next**④.
 
 ![](img/ebean7.png)
 
 #### Set up networking, database, and tags
 
-- Click the **chevron icon** to open the dropdown menu, then select the **default vpc**.
+- Click the **chevron icon**① to open the dropdown menu, then select the **default vpc**②.
 
 ![](img/ebean8.png)
 
-- Ensure public IP address is **Activated** and select all **Availability Zones**.
+- Ensure public IP address is **Activated**③ and select all **Availability Zones**④.
 
 ![](img/ebean9.png)
 
-- Click the **Add new tag** button.
+- Click the **Add new tag**⑤ button.
 
 ![](img/ebean10.png)
 
-- Specify a **Key** and **Value** pair, and proceed by clicking **Next**.
+- Specify a **Key**⑥ and **Value**⑦ pair, and proceed by clicking **Next**⑧.
 
 ![](img/ebean11.png)
 
 #### Configure instance traffic and scaling
 
-- Click on the Root volume type field, then choose **General Purpose 3(SSD)** from the options.
+- Click on the Root volume type field, then choose **General Purpose 3(SSD)**① from the options.
 
 ![](img/ebean12.png)
 
-- Within the Auto Scaling group section, choose the **Load balanced** option.
+- Within the Auto Scaling group section, choose the **Load balanced**② option.
 
 ![](img/ebean13.png)
 
-- Specify the desired minimum and maximum number of **Instances** to be provisioned.
+- Specify the desired minimum and maximum number of **Instances**③ to be provisioned.
 
 ![](img/ebean14.png)
 
-- Scroll down to Instances types and change it to **t2.micro** to remain within the free tier limits.
+- Scroll down to Instances types and change it to **t2.micro**④ to remain within the free tier limits.
 
 ![](img/ebean15.png)
 
-- Within the Processes section, click the **radio button** to select it, then click **Actions**.
+- Within the Processes section, click the **radio button**⑤ to select it, then click **Actions**⑥.
 
 ![](img/ebean16.png)
 
-- Choose **Edit**.
+- Choose **Edit**⑦.
 
 ![](img/ebean17.png)
 
-- Click the **Chevron down icon** next to Sessions, verify that Session stickiness is **Enabled**, and then click **Save**.
+- Click the **Chevron down icon**⑧ next to Sessions, verify that Session stickiness is **Enabled**⑨, and then click **Save**⑩.
 
 ![](img/ebean18.png)
 
-- Click the **Next** button.
+- Click the **Next**⑪ button.
 
 ![](img/ebean19.png)
 
 #### Configure updates, monitoring, and logging
 
-- Within the Application deployments section, click on the Deployment policy field, then choose **Rolling** from the options.
+- Within the Application deployments section, click on the Deployment policy field, then choose **Rolling**① from the options.
 
 ![](img/ebean20.png)
 
-- Specify the **Deployment batch size** you want to use.
+- Specify the **Deployment batch size**② you want to use.
 
 ![](img/ebean21.png)
 
 > [!NOTE]
 For this example, we are using a Deployment batch size of 50%. However, in a production environment with multiple instances, it's recommended to select no more than 25%, ideally around 10% to deploy to one instance at a time.
 
-- Click the **Next** button.
+- Click the **Next**③ button.
 
 ![](img/ebean22.png)
 
-- Take a moment to review your settings, and then click **Submit**.
+- Take a moment to review your settings, and then click **Submit**④.
 
 ![](img/ebean23.png)
 
@@ -245,50 +245,50 @@ For this example, we are using a Deployment batch size of 50%. However, in a pro
 
 ### Create an RDS Database
 
-- Enter **RDS** in the search bar and choose **Aurora and RDS** from the displayed services.
+- Enter **RDS**① in the search bar and choose **Aurora and RDS**② from the displayed services.
 
 ![](img/rds1.png)
 
-- Click **Create database** to begin setting up a new database.
+- Click **Create database**③ to begin setting up a new database.
 
 ![](img/rds2.png)
 
-- Select **MySQL**.
+- Select **MySQL**④.
 
 ![](img/rds3.png)
 
-- Choose the **Free tier** option to keep your database usage within the free tier.
+- Choose the **Free tier**⑤ option to keep your database usage within the free tier.
 
 ![](img/rds4.png)
 
-- Provide a unique **DB instance identifier**, then select the **Auto generate password** option.
+- Provide a unique **DB instance identifier**⑥, then select the **Auto generate password**⑦ option.
 
 ![](img/rds5.png)
 
-- In the VPC section, select **Create new** and type in your **New VPC security group name**.
+- In the VPC section, select **Create new**⑧ and type in your **New VPC security group name**⑨.
 
 ![](img/rds6.png)
 
-- Click on the **chevron icon** next to Additional configuration.
+- Click on the **chevron icon**⑩ next to Additional configuration.
 
 ![](img/rds7.png)
 
-- Enter your desired **Initial database name**.
+- Enter your desired **Initial database name**⑪.
 
 ![](img/rds8.png)
 
 > [!NOTE]
 It's important for this exercise that you name your initial database 'accounts' to match the configuration in our codebase.
 
-- Click on **Create database**.
+- Click on **Create database**⑫.
 
 ![](img/rds9.png)
 
-- **Close** the pop up message.
+- **Close**⑬ the pop up message.
 
 ![](img/rds10.png)
 
-- Click **View credential details** to get the credentials for your database.
+- Click **View credential details**⑭ to get the credentials for your database.
 
 ![](img/rds11.png)
 
@@ -300,11 +300,11 @@ It's important for this exercise that you name your initial database 'accounts' 
 
 ### RDS Security Group Setup
 
-- Search for ec2 in the search bar and then select **EC2** from the services.
+- Search for ec2 in the search bar and then select **EC2**① from the services.
 
 ![](img/ec2-1.png)
 
-- Click on **Instances**.
+- Click on **Instances**②.
 
 ![](img/ec2-2.png)
 
@@ -312,35 +312,35 @@ It's important for this exercise that you name your initial database 'accounts' 
 
 ![](img/ec2-3.png)
 
-- Choose one of the servers created and then click the link to its **Security group**.
+- Choose one of the **servers**③ created and then click the link to its **Security group**④.
 
 ![](img/ec2-4.png)
 
-- Copy the **Security group ID** of the EC2 instances and then go to **Security Groups** under the Network & Security tab.
+- Copy the **Security group ID**⑤ of the EC2 instances and then go to **Security Groups**⑥ under the Network & Security tab.
 
 ![](img/ec2-5.png)
 
-- Click the **Security group ID** of the security group created by RDS.
+- Click the **Security group ID**⑦ of the security group created by RDS.
 
 ![](img/ec2-6.png)
 
-- Click **Edit inbound rules**.
+- Click **Edit inbound rules**⑧.
 
 ![](img/ec2-7.png)
 
-- Click the **Add rule** button.
+- Click the **Add rule**⑨ button.
 
 ![](img/ec2-8.png) 
 
-- Search and select **MYSQL/Aurora**.
+- Search and select **MYSQL/Aurora**⑩.
 
 ![](img/ec2-9.png)
 
-- Paste in the **security group ID** of the instances you copied earlier, and click **Save rule**.
+- Paste in the **security group ID**⑪ of the instances you copied earlier, and click **Save rule**⑫.
 
 ![](img/ec2-10.png)
 
-- Return to the **Instances** page.
+- Return to the **Instances**⑬ page.
 
 ![](img/ec2-11.png)
 
@@ -348,7 +348,7 @@ It's important for this exercise that you name your initial database 'accounts' 
 
 ### Initialise Database
 
-- Select any of the **instances** and copy its **Public IPv4 address**.
+- Select any of the **instances**① and copy its **Public IPv4 address**②.
 
 ![](img/init-db.png)
 
@@ -359,7 +359,7 @@ It's important for this exercise that you name your initial database 'accounts' 
 > [!NOTE]
 Make sure to replace <key pair name> with the exact name of your key pair file and <PUBLIC IP> with your Public IP address. When replacing the Public IP, substitute the dots (.) with dashes (-). For example: `ssh -i "cicdbeankey.pem" ec2-user@ec2-3-90-183-88.compute-1.amazonaws.com`.
 
-- Run the command `dnf search mysql` to search for MySQL packages, and then copy the name of the **mysql client name** package from the results.
+- Run the command **`dnf search mysql`①** to search for MySQL packages, and then copy the name of the **mysql client name**② package from the results.
 
 ![](img/init-db3.png)
 
@@ -371,11 +371,11 @@ Make sure to replace <key pair name> with the exact name of your key pair file a
 
 ![](img/init-db5.png)
 
-- Go to the [schema page](https://github.com/StrangeJay/jprofile-project/blob/aws-ci/src/main/resources/db_backup.sql) and click **Raw**.
+- Go to the [schema page](https://github.com/StrangeJay/jprofile-project/blob/aws-ci/src/main/resources/db_backup.sql) and click **Raw**③.
 
 ![](img/init-db6.png)
 
-- Copy the **URL** from your browser's address bar.
+- Copy the **URL**④ from your browser's address bar.
 
 ![](img/init-db7.png)
 
@@ -393,21 +393,21 @@ Make sure to replace <key pair name> with the exact name of your key pair file a
 
 ### Set Up Your Code Repository
 
-- Go to [Bitbucket](https://bitbucket.org/product) and create a Bitbucket account if you don't have one yet.
+- Go to [**Bitbucket**](https://bitbucket.org/product) and create a Bitbucket account if you don't have one yet.
 
-- Click on **Create a workspace**.
+- Click on **Create a workspace**①.
 
 ![](img/bb1.png)
 
-- Provide a **Name** for your workspace in the designated field, and then click the **Agree and create workspace** button.
+- Provide a **Name**② for your workspace in the designated field, and then click the **Agree and create workspace**③ button.
 
 ![](img/bb2.png)
 
-- Select **Create repository**.
+- Select **Create repository**④.
 
 ![](img/bb3.png)
 
-- Fill in the necessary details and click on **Create repository**.
+- Fill in the necessary details and click on **Create repository**⑤.
 
 ![](img/bb4.png)
 
@@ -421,22 +421,22 @@ When creating the repository, ensure it's empty. Do not add a README file or a .
 > [!NOTE]
 You can either use the existing ssh key or create a new one.
 
-- Run the command **`cat <public key name>`** to display your **public key**, and then copy the displayed key.
+- Run the command **`cat <public key name>`** to display your **public key**⑥, and then copy the displayed key.
 
 ![](img/bb6.png)
 
 > [!NOTE]
 Make sure to replace `<public key name>` in the command with the actual filename of your public key.
 
-- Click the **gear icon** and then select **Personal Bitbucket settings** from the menu.
+- Click the **gear icon**⑦ and then select **Personal Bitbucket settings**⑧ from the menu.
 
 ![](img/bb7.png)
 
-- Select **SSH keys** from the left-hand menu, and then click the **Add key** button.
+- Select **SSH keys**⑨ from the left-hand menu, and then click the **Add key**⑩ button.
 
 ![](img/bb8.png)
 
-- In the form provided, fill in the necessary **details**. Give your SSH key a descriptive name, paste the public key you copied earlier into the designated field, and then click **Add key**.
+- In the form provided, fill in the necessary **details**⑪. Give your SSH key a descriptive name, paste the public key you copied earlier into the designated field, and then click **Add key**⑫.
 
 ![](img/bb9.png)
 
@@ -456,39 +456,39 @@ Host bitbucket.org
 
 ![](img/bb11.png)
 
-- Go back to the [Code repository](https://github.com/StrangeJay/jprofile-project/tree/main) on github and click the **Code** button.
+- Go back to the [Code repository](https://github.com/StrangeJay/jprofile-project/tree/main) on github and click the **Code**⑬ button.
 
 ![](img/bb12.png)
 
-- Select the SSH option and then **copy** the displayed URL.
+- Select the SSH option and then **copy**⑭ the displayed URL.
 
 ![](img/bb13.png)
 
-- Run the following command to download the codebase to your local machine: **`git clone git@github.com:StrangeJay/jprofile-project.git`**. Once the download is complete, navigate into the repository directory by running: **`cd jprofile-project`**.
+- Run the following command to download the codebase to your local machine: **`git clone git@github.com:StrangeJay/jprofile-project.git`⑮**. Once the download is complete, navigate into the repository directory by running: **`cd jprofile-project`⑯**.
 
 ![](img/bb14.png)
 
-- Run the command **`git checkout aws-ci`** to switch to the 'aws-ci' branch.
+- Run the command **`git checkout aws-ci`⑰** to switch to the 'aws-ci' branch.
 
 ![](img/bb15.png)
 
-- Run the command **`cat .git/config`** to view the remote repository that your local repository is currently tracking. Then, run **`git remote rm origin`** to remove the connection to the GitHub repository.
+- Run the command **`cat .git/config`⑱** to view the remote repository that your local repository is currently tracking. Then, run **`git remote rm origin`⑲** to remove the connection to the GitHub repository.
 
 ![](img/bb16.png)
 
-- Go back to your repository on Bitbucket. Locate the **SSH clone command** and copy the portion of the URL that comes after git clone, as shown in the image below.
+- Go back to your repository on Bitbucket. Locate the **SSH clone command**⑳ and copy the portion of the URL that comes after git clone, as shown in the image below.
 
 ![](img/bb17.png)
 
-- Go back to your terminal and run the following command, replacing `<copied Bitbucket SSH url>` with the SSH URL you just copied from Bitbucket: **`git remote add origin <copied Bitbucket SSH url>`**.
+- Go back to your terminal and run the following command, replacing `<copied Bitbucket SSH url>` with the SSH URL you just copied from Bitbucket: **`git remote add origin <copied Bitbucket SSH url>`㉑**.
 
 ![](img/bb18.png)
 
-- Run the command `cat .git/config`  again in your terminal. Verify that the [remote "origin"] section now shows the **bitbucket url** you just added.
+- Run the command `cat .git/config`  again in your terminal. Verify that the [remote "origin"] section now shows the **bitbucket url**㉒ you just added.
 
 ![](img/bb19.png)
 
-- Run the command **`git push origin --all`** to push all local branches (including 'main' and 'aws-ci') to your Bitbucket repository. After running the command, confirm in your Bitbucket repository that **both branches** ('main' and 'aws-ci') have been successfully pushed.
+- Run the command **`git push origin --all`㉓** to push all local branches (including 'main' and 'aws-ci') to your Bitbucket repository. After running the command, confirm in your Bitbucket repository that **both branches**㉔ ('main' and 'aws-ci') have been successfully pushed.
 
 ![](img/bb20.png)
 
@@ -496,7 +496,7 @@ Host bitbucket.org
 
 ![](img/bb21.png)
 
-- On Bitbucket, click the **chevron down icon** located near the 'main' branch name. A dropdown menu should appear, where you should confirm that you see both the **main and aws-ci branches** listed.
+- On Bitbucket, click the **chevron down icon**㉕ located near the 'main' branch name. A dropdown menu should appear, where you should confirm that you see both the **main and aws-ci branches**㉖ listed.
 
 ![](img/bb22.png)
 
@@ -504,19 +504,19 @@ Host bitbucket.org
 
 ### Create an S3 Bucket
 
-- Go to your AWS console, search for 'S3' in the search bar, and select **S3** from the list of services.
+- Go to your AWS console, search for 'S3' in the search bar, and select **S3**① from the list of services.
 
 ![](img/s3-1.png)
 
-- Click on **Create bucket**.
+- Click on **Create bucket**②.
 
 ![](img/s3-2.png)
 
-- Provide a **Bucket name**.
+- Provide a **Bucket name**③.
 
 ![](img/s3-3.png)
 
-- Click on **Create bucket** to create the bucket.
+- Click on **Create bucket**④ to create the bucket.
 
 ![](img/s3-4.png)
 
@@ -527,38 +527,38 @@ Just give your bucket a name and create it, leave every other setting on default
 
 ### Set Up Code Build
 
-- In your AWS console, use the search bar to find 'CodeBuild', and then choose **CodeBuild** from the displayed services.
+- In your AWS console, use the search bar to find 'CodeBuild', and then choose **CodeBuild**① from the displayed services.
 
 ![](img/cb1.png)
 
-- Click on **Create project**.
+- Click on **Create project**②.
 
 ![](img/cb2.png)
 
-- Enter a **Project name** in the designated field.
+- Enter a **Project name**③ in the designated field.
 
 ![](img/cb3.png)
 
-- In the Source provider section, click the **chevron icon** and select **Bitbucket** from the dropdown menu that appears.
+- In the Source provider section, click the **chevron icon**④ and select **Bitbucket**⑤ from the dropdown menu that appears.
 
 ![](img/cb4.png)
 
-- Click on **Manage account credentials** to connect your AWS CodeBuild project to your Bitbucket account.
+- Click on **Manage account credentials**⑥ to connect your AWS CodeBuild project to your Bitbucket account.
 
 ![](img/cb5.png)
 
-- Click the **chevron icon** and then select **OAuth app** as the Credential type from the dropdown menu.
+- Click the **chevron icon**⑦ and then select **OAuth app**⑧ as the Credential type from the dropdown menu.
 
 ![](img/cb6.png)
 
 > [!NOTE]
 While using a Bitbucket access token is the recommended and most secure method, it's a paid feature. Therefore, as long as you are logged into Bitbucket in the same web browser, using OAuth app is a viable alternative.
 
-- Choose **CodeBuild** and then click the **Connect to Bitbucket** button.
+- Choose **CodeBuild**⑨ and then click the **Connect to Bitbucket**⑩ button.
 
 ![](img/cb7.png)
 
-- Click the **Confirm** button to finalize the connection.
+- Click the **Confirm**⑪ button to finalize the connection.
 
 ![](img/cb8.png)
 
@@ -566,19 +566,19 @@ While using a Bitbucket access token is the recommended and most secure method, 
 
 ![](img/cb9.png)
 
-- Click in the empty field below 'Repository'. A dropdown menu will appear; select your **Bitbucket repository** from the list.
+- Click in the empty field below 'Repository'. A dropdown menu will appear; select your **Bitbucket repository**⑫ from the list.
 
 ![](img/cb10.png)
 
-- In the 'Source version' field, type the branch name **`aws-ci`**.
+- In the 'Source version' field, type the branch name **`aws-ci`⑬**.
 
 ![](img/cb11.png)
 
-- Choose **Ubuntu** as the operating system for your build environment.
+- Choose **Ubuntu**⑭ as the operating system for your build environment.
 
 ![](img/cb12.png)
 
-- Scroll down the page until you find the 'Buildspec' section, and then click the **Switch to editor** button.
+- Scroll down the page until you find the 'Buildspec' section, and then click the **Switch to editor**⑮ button.
 
 ![](img/cb13.png)
 
@@ -603,19 +603,19 @@ These `sed` commands modify the **`application.properties`** file in **`src/main
 
 ![](img/cb16.png)
 
-- Scroll down to the 'Artifacts' section. Under 'Type', select **Amazon S3** from the available options.
+- Scroll down to the 'Artifacts' section. Under 'Type', select **Amazon S3**⑯ from the available options.
 
 ![](img/cb17.png)
 
-- Click in the 'Bucket name' field. A dropdown menu will appear; select the **bucket** you created earlier from that list.
+- Click in the 'Bucket name' field. A dropdown menu will appear; select the **bucket**⑰ you created earlier from that list.
 
 ![](img/cb18.png)
 
-- "Enter a **Group name** and a **Stream name prefix** for your CloudWatch logs. Once you've done this, click the **Create build project** button.
+- "Enter a **Group name**⑱ and a **Stream name prefix**⑲ for your CloudWatch logs. Once you've done this, click the **Create build project**⑳ button.
 
 ![](img/cb19.png)
 
-- Now that your project is created, click the **Start build** button to begin the build process.
+- Now that your project is created, click the **Start build**㉑ button to begin the build process.
 
 ![](img/cb20.png)
 
@@ -627,82 +627,82 @@ These `sed` commands modify the **`application.properties`** file in **`src/main
 
 ### Set Up Code Pipeline
 
-- In your AWS console, use the search bar to find 'CodePipeline', and then choose **CodePipeline** from the displayed services.
+- In your AWS console, use the search bar to find 'CodePipeline', and then choose **CodePipeline**① from the displayed services.
 
 ![](img/cp1.png)
 
-- Click the **Create pipeline** button.
+- Click the **Create pipeline**② button.
 
 ![](img/cp2.png)
 
-- Select the **Build custom pipeline** option and then click the **Next** button.
+- Select the **Build custom pipeline**③ option and then click the **Next**④ button.
 
 ![](img/cp3.png)
 
-- Enter a **Pipeline name** and then click the **Next** button.
+- Enter a **Pipeline name**⑤ and then click the **Next**⑥ button.
 
 ![](img/cp4.png)
 
-- Click on the 'Source provider' field. A dropdown menu will appear; select **Bitbucket** from that list.
+- Click on the 'Source provider' field. A dropdown menu will appear; select **Bitbucket**⑦ from that list.
 
 ![](img/cp5.png)
 
-- Click the **Connect to Bitbucket** button to link your Bitbucket account to CodePipeline.
+- Click the **Connect to Bitbucket**⑧ button to link your Bitbucket account to CodePipeline.
 
 ![](img/cp6.png)
 
-- Enter a **Connection name** in the provided field and then click the **Connect to Bitbucket** button.
+- Enter a **Connection name**⑨ in the provided field and then click the **Connect to Bitbucket**⑩ button.
 
 ![](img/cp7.png)
 
-- Click on **Install a new app**.
+- Click on **Install a new app**⑪.
 
 ![](img/cp8.png)
 
-- Click the **Grant access** button.
+- Click the **Grant access**⑫ button.
 
 ![](img/cp9.png)
 
-- Click on **Connect** to complete the connection.
+- Click on **Connect**⑬ to complete the connection.
 
 ![](img/cp10.png)
 
-- Click in the 'Repository' field. A dropdown menu will appear; select your **Bitbucket repo** from that list.
+- Click in the 'Repository' field. A dropdown menu will appear; select your **Bitbucket repo**⑭ from that list.
 
 ![](img/cp11.png)
 
-- Click on the Default branch field and select **aws-ci** from the dropdown menu.
+- Click on the Default branch field and select **aws-ci**⑮ from the dropdown menu.
 
 ![](img/cp12.png)
 
-- Click **Next**.
+- Click **Next**⑯.
 
 ![](img/cp13.png)
 
-- Choose **Other build providers**. Next, locate the empty field underneath. Click on it to open a dropdown list, and then select **AWS CodeBuild** from the options.
+- Choose **Other build providers**⑰. Next, locate the empty field underneath. Click on it to open a dropdown list, and then select **AWS CodeBuild**⑱ from the options.
 
 ![](img/cp14.png)
 
-- Click in the Project name field and select your **created build project**.
+- Click in the Project name field and select your **created build project**⑲.
 
 ![](img/cp15.png)
 
-- Click the **Next** button to proceed to the next step.
+- Click the **Next**⑳ button to proceed to the next step.
 
 ![](img/cp16.png)
 
-- Choose **AWS CodeBuild** as the test provider for your pipeline.
+- Choose **AWS CodeBuild**㉑ as the test provider for your pipeline.
 
 ![](img/cp17.png)
 
 > [!NOTE]
 This step is optional and can be skipped if you prefer.
 
-- Click in the Project name field and select your **build project**.
+- Click in the Project name field and select your **build project**㉒.
 
 ![](img/cp18.png)
 
-- Click the **Next** button.
+- Click the **Next**㉓ button.
 
 ![](img/cp19.png)
 
@@ -713,23 +713,23 @@ To avoid issues arising from differences between the previously built artifact a
 
 ![](img/cp19-3.png)
 
-- In the deployment stage, choose **AWS Elastic Beanstalk** as the Deploy provider from the available options.
+- In the deployment stage, choose **AWS Elastic Beanstalk**㉔ as the Deploy provider from the available options.
 
 ![](img/cp20.png)
 
-- Click on the 'Application name' field and select your desired **Application name** from the options provided.
+- Click on the 'Application name' field and select your desired **Application name**㉕ from the options provided.
 
 ![](img/cp21.png)
 
-- Select your **Environment name**.
+- Select your **Environment name**㉖.
 
 ![](img/cp22.png)
 
-- Click **Next**.
+- Click **Next**㉗.
 
 ![](img/cp23.png)
 
-- Take a moment to review all the pipeline configurations you've set up. Once you're satisfied, click the **Create pipeline** button.
+- Take a moment to review all the pipeline configurations you've set up. Once you're satisfied, click the **Create pipeline**㉘ button.
 
 ![](img/cp24.png)
 
@@ -745,7 +745,7 @@ To avoid issues arising from differences between the previously built artifact a
 
 ### Test Entire Set Up
 
-- Go to your Elastic Beanstalk environment page. There, click on the **Domain name** link to open your deployed website.
+- Go to your Elastic Beanstalk environment page. There, click on the **Domain name**① link to open your deployed website.
 
 ![](img/test1.png)
 
