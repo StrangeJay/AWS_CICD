@@ -8,7 +8,7 @@ In this guide, we will walk through the process of setting up a fully automated 
 
 Initially, our codebase is hosted on GitHub, but we will migrate it to Bitbucket to align with our pipeline requirements. Bitbucket provides a seamless integration with AWS, allowing us to trigger builds and deployments efficiently. We will use AWS CodeCommit as an intermediate step to facilitate integration between Bitbucket and AWS services.
 
-Additionally, we will create and initialize our own database, ensuring the application has a properly configured data layer before deployment. This step will involve:
+Additionally, we will create and initialize our database, ensuring the application has a properly configured data layer before deployment. This step will involve:
 
 - Setting up a managed database service (Amazon RDS)
 
@@ -39,7 +39,7 @@ By the end of this guide, you will have a fully functional CI/CD pipeline that a
 |S/N | Project Tasks                              |
 |----|--------------------------------------------|
 | 1  |Create a key pair                           |
-| 2  |Set up elastic beanstalk                    |
+| 2  |Set up Elastic Beanstalk                    |
 | 3  |Create an RDS database                      |
 | 4  |Initialise database                         |
 | 5  |Setup Bitbucket                             |
@@ -52,7 +52,7 @@ By the end of this guide, you will have a fully functional CI/CD pipeline that a
 
 - [x] Task 1: Creating a key pair
 - [x] Task 2: Create an EC2 Instance Profile
-- [x] Task 3: Set Up Elasticbeanstalk
+- [x] Task 3: Set Up Elastic Beanstalk
 - [x] Task 4: Create RDS Database
 - [x] Task 5: Edit RDS security group to allow inbound traffic from the e2 instances created by ElasticBeanstalk
 - [x] Task 6: Initialise Database
@@ -144,7 +144,7 @@ By the end of this guide, you will have a fully functional CI/CD pipeline that a
 ![](img/ebean3.png)
 
 > [!NOTE]
-It is essential that the domain name is unique, since it will be used to construct the URL.
+The domain name must be unique, since it will be used to construct the URL.
 
 - Since our app runs on Tomcat, click the **chevron icon**⑦ and select **Tomcat**⑧ as the platform.
 
@@ -196,7 +196,7 @@ It is essential that the domain name is unique, since it will be used to constru
 
 ![](img/ebean14.png)
 
-- Scroll down to Instances types and change it to **t2.micro**④ to remain within the free tier limits.
+- Scroll down to Instance types and change it to **t2.micro**④ to remain within the free tier limits.
 
 ![](img/ebean15.png)
 
@@ -227,7 +227,7 @@ It is essential that the domain name is unique, since it will be used to constru
 ![](img/ebean21.png)
 
 > [!NOTE]
-For this example, we are using a Deployment batch size of 50%. However, in a production environment with multiple instances, it's recommended to select no more than 25%, ideally around 10% to deploy to one instance at a time.
+For this example, we are using a Deployment batch size of 50%. However, in a production environment with multiple instances, it's recommended to select no more than 25%, ideally around 10%, to deploy to one instance at a time.
 
 - Click the **Next**③ button.
 
@@ -284,7 +284,7 @@ It's important for this exercise that you name your initial database 'accounts' 
 
 ![](img/rds9.png)
 
-- **Close**⑬ the pop up message.
+- **Close**⑬ the pop-up message.
 
 ![](img/rds10.png)
 
@@ -300,7 +300,7 @@ It's important for this exercise that you name your initial database 'accounts' 
 
 ### RDS Security Group Setup
 
-- Search for ec2 in the search bar and then select **EC2**① from the services.
+- Search for EC2 in the search bar and then select **EC2**① from the services.
 
 ![](img/ec2-1.png)
 
@@ -367,7 +367,7 @@ Make sure to replace <key pair name> with the exact name of your key pair file a
 
 ![](img/init-db4.png)
 
-- Execute this command in your terminal: **`mysql -h <your rds endpoint> -u <your user> -p accounts`**. Making sure to substitute your RDS endpoint for `<your rds endpoint>` and your username for `<your user>`. When prompted, enter your password to log in to the 'accounts' database, and once you've verified that you can access it, type `exit` to disconnect.
+- Execute this command in your terminal: **`mysql -h <your rds endpoint> -u <your user> -p accounts`**. Make sure to substitute your RDS endpoint for `<your rds endpoint>` and your username for `<your user>`. When prompted, enter your password to log in to the 'accounts' database, and once you've verified that you can access it, type `exit` to disconnect.
 
 ![](img/init-db5.png)
 
@@ -419,7 +419,7 @@ When creating the repository, ensure it's empty. Do not add a README file or a .
 ![](img/bb5.png)
 
 > [!NOTE]
-You can either use the existing ssh key or create a new one.
+You can either use the existing SSH key or create a new one.
 
 - Run the command **`cat <public key name>`** to display your **public key**⑥, and then copy the displayed key.
 
@@ -521,7 +521,7 @@ Host bitbucket.org
 ![](img/s3-4.png)
 
 > [!NOTE]
-Just give your bucket a name and create it, leave every other setting on default.
+Just give your bucket a name and create it, leaving every other setting on default.
 
 ---
 
@@ -595,7 +595,7 @@ This command consists of three sed (stream editor) operations that modify the ap
 - sed -i 's/db01:3306/vprodb.c50sgqqusvnr.us-east-1.rds.amazonaws.com:3306/' src/main/resources/application.properties
 ```
 
-These `sed` commands modify the **`application.properties`** file in **`src/main/resources/`** by updating database credentials and connection details. The first command replaces the database password, changing `jdbc.password=admin123` to `jdbc.password=nr1mTWY6OvlLBovvmZpD`, where `nr1mTWY6OvlLBovvmZpD` is a placeholder and should be replaced with your actual password. The second command attempts to update the database username, but since the replacement value is the same (`admin`), no actual change occurs. The third command updates the database host, replacing `db01:3306` with `vprodb.c50sgqqusvnr.us-east-1.rds.amazonaws.com:3306`, which is an AWS RDS endpoint. All placeholders, including the password and database host, should be replaced with your actual connection details before running these commands. Study this image to see how it should look.
+These `sed` commands modify the **`application.properties`** file in **`src/main/resources/`** by updating database credentials and connection details. The first command replaces the database password, changing `jdbc.password=admin123` to `jdbc.password=nr1mTWY6OvlLBovvmZpD`, where `nr1mTWY6OvlLBovvmZpD` is a placeholder and should be replaced with your actual password. The second command attempts to update the database username, but since the replacement value is the same (`admin`), no actual change occurs. The third command updates the database host, replacing `db01:3306` with `vprodb.c50sgqqusvnr.us-east-1.rds.amazonaws.com:3306`, which is an AWS RDS endpoint. All placeholders, including the password and database host, should be replaced with your connection details before running these commands. Study this image to see how it should look.
 
 ![](img/cb15.png)
 
@@ -611,7 +611,7 @@ These `sed` commands modify the **`application.properties`** file in **`src/main
 
 ![](img/cb18.png)
 
-- "Enter a **Group name**⑱ and a **Stream name prefix**⑲ for your CloudWatch logs. Once you've done this, click the **Create build project**⑳ button.
+- Enter a **Group name**⑱ and a **Stream name prefix**⑲ for your CloudWatch logs. Once you've done this, click the **Create build project**⑳ button.
 
 ![](img/cb19.png)
 
@@ -749,7 +749,7 @@ To avoid issues arising from differences between the previously built artifact a
 
 ![](img/test1.png)
 
-- If your set up was done right,  a webpage should have loaded. On this page, please enter **`Admin_vp`** as the Username and also **`Admin_vp`** as the Password to log in.
+- If your setup was done right,  a webpage should have loaded. On this page, please enter **`Admin_vp`** as the Username and also **`Admin_vp`** as the Password to log in.
 
 ![](img/test2.png)
 
