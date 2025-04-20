@@ -707,7 +707,7 @@ This step is optional and can be skipped if you prefer.
 ![](img/cp19.png)
 
 > [!NOTE]
-To avoid issues arising from differences between the previously built artifact and the Source artifact, ensure that you select 'Source artifact' as your input artifact.
+Select ‘Source artifact’ as your input artifact. This ensures that your tests run against the original source code, which includes all necessary files and folder structure (like test directories and dependency manifests). Using the ‘Build artifact’ may lead to errors if it lacks required test files or is in a packaged format unsuitable for testing.
 
 ![](img/cp19-2.png)
 
